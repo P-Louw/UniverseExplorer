@@ -1,0 +1,238 @@
+{
+  "Star": [
+    {
+      "amountOrbitPlanet": 0,
+      "coreTemperature": {
+        "max": 15000000,
+        "min": 0.0
+      },
+      "age": 4600000000,
+      "id": 1,
+      "planetarySystemID": 1,
+      "name": "Sun",
+      "classification": "Yellow dwarf star",
+      "diameter": 1392684,
+      "surfaceTemperature":{
+        "max": 5500,
+        "min": 0.0
+      } ,
+      "system": null 
+    }
+  ],
+  "Planet" : [
+   
+
+    {
+      "orbitDistance":57900000,
+      "orbitPeriod": 88.0,
+      "knownMoons": 0,
+      "id": 1,
+      "planetarySystemID": 1,
+      "name": "Mercury",
+      "classification": "Planet",
+      "diameter": 4879,
+      "surfaceTemperature": {
+        "max": 427,
+        "min": -173
+      }
+    ,
+      "system": null
+    },
+    {
+      "orbitDistance": 149.6,
+      "orbitPeriod": 365.2,
+      "knownMoons": 1,
+      "id": 2,
+      "planetarySystemID": 1,
+      "name": "Earth",
+      "classification": null,
+      "diameter":12756000000 ,
+      "surfaceTemperature": {
+        "max": 58,
+        "min": -88
+      },
+      "system": null
+    },
+    
+    {
+      "orbitDistance": 108200000,
+      "orbitPeriod": 365.2,
+      "knownMoons": 0,
+      "id": 3,
+      "planetarySystemID": 1,
+      "name": "Venus",
+      "classification": "Planet",
+      "diameter": 12104,
+      "surfaceTemperature": {
+        "max": 365.2,
+        "min": 0.0
+      }
+    ,
+      "system": null
+    },
+
+    {
+      "orbitDistance": 227900000,
+      "orbitPeriod": 1.9,
+      "knownMoons": 2,
+      "id": 4,
+      "planetarySystemID": 1,
+      "name": "Mars",
+      "classification": "Planet",
+      "diameter": 6805,
+      "surfaceTemperature": {
+        "max": 0.0,
+        "min": -63.0
+      }
+    ,
+      "system": null
+    },
+
+    {
+      "orbitDistance": 413700000,
+      "orbitPeriod": 4.6,
+      "knownMoons": 0,
+      "id": 5,
+      "planetarySystemID": 1,
+      "name": "Ceres",
+      "classification": "Planet",
+      "diameter": 142984,
+      "surfaceTemperature": {
+        "max": 0.0,
+        "min": -108
+      }
+    ,
+      "system": null
+    },
+
+    {
+      "orbitDistance": 778300000,
+      "orbitPeriod": 11.9,
+      "knownMoons": 67,
+      "id": 6,
+      "planetarySystemID": 1,
+      "name": "Jupiter",
+      "classification": "Planet",
+      "diameter": 142984,
+      "surfaceTemperature": {
+        "max": 0.0,
+        "min": -108
+      }
+    ,
+      "system": null
+    },
+
+    {
+      "orbitDistance": 1400000000,
+      "orbitPeriod": 88.0,
+      "knownMoons": 62,
+      "id": 7,
+      "planetarySystemID": 1,
+      "name": "Saturn",
+      "classification": "Planet",
+      "diameter":120536,
+      "surfaceTemperature": {
+        "max": 427,
+        "min": -173
+      }
+    ,
+      "system": null
+    },
+    {
+      "orbitDistance": 2900000000,
+      "orbitPeriod": 84.0,
+      "knownMoons": 27,
+      "id": 8,
+      "planetarySystemID": 1,
+      "name": "Uranus",
+      "classification": "Planet",
+      "diameter": 51118,
+      "surfaceTemperature": {
+        "max": 0.0,
+        "min": -197
+      }
+    ,
+      "system": null
+    },
+    {
+      "orbitDistance": 4500000000,
+      "orbitPeriod": 168.8,
+      "knownMoons": 14,
+      "id": 9,
+      "planetarySystemID": 1,
+      "name": "Neptune",
+      "classification": "Planet",
+      "diameter": 49528,
+      "surfaceTemperature": {
+        "max": 0.0,
+        "min": -201
+      }
+    ,
+      "system": null
+    },
+    {
+      "orbitDistance": 5900000000,
+      "orbitPeriod": 246.0,
+      "knownMoons": 5,
+      "id": 10,
+      "planetarySystemID": 1,
+      "name": "Pluto",
+      "classification": "Planet",
+      "diameter": 2306,
+      "surfaceTemperature": {
+        "max": 229,
+        "min": 0.0
+      }
+    ,
+      "system": null
+    },
+    {
+      "orbitDistance": 6400000000,
+      "orbitPeriod": 283,
+      "knownMoons": 2,
+      "id": 11,
+      "planetarySystemID": 1,
+      "name": "Haumea",
+      "classification": "Dwarf planet",
+      "diameter": 1518,
+      "surfaceTemperature": {
+        "max": 0.0,
+        "min": -241
+      }
+    ,
+      "system": null
+    },
+    {
+      "orbitDistance": 6900000000,
+      "orbitPeriod": 309.9,
+      "knownMoons": 0,
+      "id": 12,
+      "planetarySystemID": 1,
+      "name": "makemake",
+      "classification": "Dwarf planet",
+      "diameter": 0,
+      "surfaceTemperature": {
+        "max": 0.0,
+        "min": -239
+      }
+    ,
+      "system": null
+    },
+    {
+      "orbitDistance": 10100000000,
+      "orbitPeriod": 560.9,
+      "knownMoons": 1,
+      "id": 13,
+      "planetarySystemID": 0,
+      "name": "Eris",
+      "classification": "Dwarf planet",
+      "diameter": 0,
+      "surfaceTemperature": {
+        "max": 0.0,
+        "min": -213
+      }
+    ,
+      "system": null
+    }
+  ]
+}
