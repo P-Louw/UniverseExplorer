@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using App.CLIghtFramework.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using static System.Console;
 
-namespace App.Client
+namespace App.Core
 {
     class Program
     {

@@ -4,8 +4,9 @@ using Services.Core.DataModels;
 using Services.Core.DataModels.CelestialBodies;
 using Services.Core.DataModels.CelestialObjects;
 using Services.Core.DataModels.Units;
+using Services.UniverseService.Extensions.Seed;
 
-namespace Services.UniverseService
+namespace Services.UniverseService.Context
 {
     public class UniverseContext : DbContext
     {

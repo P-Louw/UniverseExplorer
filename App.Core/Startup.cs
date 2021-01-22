@@ -1,19 +1,19 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Services.UniverseService;
+using Services.UniverseService.Extensions.IOC;
 
-namespace App.Client
+namespace App.Core
 {
     public class Startup
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration) => 
+        public Startup(IConfiguration configuration) =>
             Configuration = configuration;
-        
+
         public void ConfigureServices(IServiceCollection services) =>
-        /*services.AddDbContext<UniverseContext>()
-            .AddScoped<IPlanetService, PlanetService>()*/
+            services.UniverseAddEfService()
                 .AddScoped(typeof(MainApp))
                 .BuildServiceProvider();
 

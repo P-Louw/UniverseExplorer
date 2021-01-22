@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
+using Services.UniverseService.Context;
 
-namespace Services.UniverseService
+namespace Services.UniverseService.Extensions.IOC
 {
     public static class UniverseRegister
     {
-        public static ServiceCollection EfService(this ServiceCollection services)
+        public static IServiceCollection UniverseAddEfService(this IServiceCollection services)
         {
             services.AddDbContext<UniverseContext>()
                 .AddScoped<IUniverseService, UniverseService>();

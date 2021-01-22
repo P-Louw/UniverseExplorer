@@ -8,7 +8,7 @@ using Services.Core.DataModels.CelestialBodies;
 using Services.Core.DataModels.CelestialObjects;
 using Services.Core.DataModels.Units;
 
-namespace Services.UniverseService
+namespace Services.UniverseService.Extensions.Seed
 {
     public static class UniverseDbSeed
     {

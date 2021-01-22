@@ -1,7 +1,7 @@
 ﻿using Services.UniverseService;
 using static System.Console;
 
-namespace App.Client
+namespace App.CLIghtFramework.Extensions.Hosting
 {
     public class ContextCli
     {
