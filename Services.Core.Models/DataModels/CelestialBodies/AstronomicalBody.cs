@@ -11,7 +11,7 @@ namespace Services.Core.DataModels.CelestialBodies
         public string Name { get; set; }
         public string Classification { get; set; }
         public long Diameter { get; set; }
-        public Temperature? SurfaceTemperature { get; set; }
+        public Temperature SurfaceTemperature { get; set; }
         public PlanetarySystem System { get; set; }
     }
 }

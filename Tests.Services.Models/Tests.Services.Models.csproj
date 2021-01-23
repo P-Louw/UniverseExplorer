@@ -16,4 +16,10 @@
       <ProjectReference Include="..\Services.Core.Models\Services.Core.Models.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="DataSeedSerializable.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

@@ -8,13 +8,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Core.Models", "Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.UniverseEf", "Services.UniverseEf\Services.UniverseEf.csproj", "{A8665BAC-24E5-45D9-9307-2B203320D35E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Services.Utilities", "Tests.Services.Utilities\Tests.Services.Utilities.csproj", "{64BA96D9-3269-4238-95EA-2C4BC5E7BF0A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.CLIghtFramework", "App.CLIghtFramework\App.CLIghtFramework.csproj", "{8EBBDE5E-8229-47F0-ACBC-02203C1E1208}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.UniverseExplorer", "App.UniverseExplorer\App.UniverseExplorer.csproj", "{6D7D63AB-8155-4144-A693-318566BF3A68}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.App.CLIghtFramework", "Tests.App.CLIghtFramework\Tests.App.CLIghtFramework.csproj", "{2F6D86F5-9ABB-42B6-B16A-221C803A9B90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Services.Models", "Tests.Services.Models\Tests.Services.Models.csproj", "{5242CD8B-EE84-4A3A-BD37-2988B99C264A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Services.UniverseEf", "Tests.Services.UniverseEf\Tests.Services.UniverseEf.csproj", "{A8FA6EAC-E961-40CB-8A76-FF5156C00644}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,10 +40,6 @@ Global
 		{A8665BAC-24E5-45D9-9307-2B203320D35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8665BAC-24E5-45D9-9307-2B203320D35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8665BAC-24E5-45D9-9307-2B203320D35E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64BA96D9-3269-4238-95EA-2C4BC5E7BF0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64BA96D9-3269-4238-95EA-2C4BC5E7BF0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64BA96D9-3269-4238-95EA-2C4BC5E7BF0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64BA96D9-3269-4238-95EA-2C4BC5E7BF0A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8EBBDE5E-8229-47F0-ACBC-02203C1E1208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8EBBDE5E-8229-47F0-ACBC-02203C1E1208}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EBBDE5E-8229-47F0-ACBC-02203C1E1208}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,5 +52,13 @@ Global
 		{2F6D86F5-9ABB-42B6-B16A-221C803A9B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F6D86F5-9ABB-42B6-B16A-221C803A9B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F6D86F5-9ABB-42B6-B16A-221C803A9B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5242CD8B-EE84-4A3A-BD37-2988B99C264A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5242CD8B-EE84-4A3A-BD37-2988B99C264A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5242CD8B-EE84-4A3A-BD37-2988B99C264A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5242CD8B-EE84-4A3A-BD37-2988B99C264A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8FA6EAC-E961-40CB-8A76-FF5156C00644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FA6EAC-E961-40CB-8A76-FF5156C00644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FA6EAC-E961-40CB-8A76-FF5156C00644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FA6EAC-E961-40CB-8A76-FF5156C00644}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

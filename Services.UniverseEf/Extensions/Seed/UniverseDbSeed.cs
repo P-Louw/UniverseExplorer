@@ -12,86 +12,97 @@ namespace Services.UniverseService.Extensions.Seed
 {
     public static class UniverseDbSeed
     {
+        /// <summary>
+        /// Seed EF db with a json file consisting of arrays of:
+        /// <list type="bullet">
+        /// <item><description><see cref="Planet"/></description></item>
+        /// <item><description> <see cref="Star"/></description></item>
+        /// <item><description><see cref="PlanetarySystem"/></description></item>
+        /// </list>
+        /// </summary>
+        /// <param name="builder"><see cref="ModelBuilder"/> exposed during OnModelCreating.</param>
+        /// <returns><see cref="ModelBuilder"/></returns>
         public static ModelBuilder SeedSunPlanetsJson(this ModelBuilder builder)
         {
             var tokenDict = ImportBuilder.SeedDataJTokens();
-            var planets = tokenDict.Children()["Planet"].Values<Planet>();
-            var k = tokenDict.Children()["Planet"];
-            var star = tokenDict.Children().Values<Star>();
-                    /*builder.Entity<Star>(entity =>
-                        {
-                            builder.Entity<PlanetarySystem>(entity =>
-                                {
-                                    builder.Entity<PlanetarySystem>(entity =>
+            var planets = tokenDict["Planets"];
+            var stars = tokenDict["Star"];
+
+            builder.Entity<PlanetarySystem>(entity =>
+                    {
+                        builder.Entity<PlanetarySystem>(entity =>
+                            {
+                                entity.HasData(
+                                    new PlanetarySystem
                                         {
-                                            entity.HasData(
-                                                new PlanetarySystem
-                                                    {
-                                                        ID = 1,
-                                                        Name = "Solar system",
-                                                        Age = 4600000000
-                                                    });
+                                            ID = 1,
+                                            Name = "Solar system",
+                                            Age = 4600000000
                                         });
-                                });
-                            
-                            foreach (var entry in star)
-                                {
-                                    entity.HasData(
-                                        new Star
-                                            {
-                                                ID = entry.ID,
-                                                PlanetarySystemID = 1,
-                                                Name = entry.Name,
-                                                Classification = entry.Classification,
-                                                Diameter = entry.Diameter,
-                                                AmountOrbitPlanet = entry.AmountOrbitPlanet,
-                                                Age = entry.Age,
-                                            });
-                                    entity.OwnsOne<Temperature>(t => t.CoreTemperature)
-                                        .HasData(new
-                                            {
-                                                StarID = entry.ID,
-                                                Max = (float?) entry.CoreTemperature.Max
-                                            });
-                                    entity.OwnsOne<Temperature>(s => s.SurfaceTemperature)
-                                        .HasData(new
-                                            {
-                                                StarID = entry.ID,
-                                                Max = (float?) entry.SurfaceTemperature.Max
-                                            });
-                                }
-                   
-                        });*/
-                    
-            foreach (var planet in k.Values())
+                                entity.HasMany<Planet>()
+                                    .WithOne(p => p.System)
+                                    .HasForeignKey(k => k.PlanetarySystemID);
+                            });
+                    }
+            );
+            builder.Entity<Planet>(entity =>
                 {
-                    builder.Entity<Planet>(entity =>
+                    foreach (var entry in planets)
                         {
                             entity.HasData(
                                 new Planet
                                     {
-                                        ID = planet["id"].Value<int>(),
-                                        PlanetarySystemID = 1,
-                                        Name = planet["came"].Value<string>(),
-                                        Classification = planet["classification"].Value<string>(),
-                                        Diameter = planet["diameter"].Value<long>(),
-                                        KnownMoons = planet["knownMoons"].Value<int>(),
-                                        OrbitDistance = planet["ordBitDistance"].Value<double>(),
-                                        OrbitPeriod = planet["orbitPeriod"].Value<double>(),
+                                        ID = (int) entry.SelectToken("id"),
+                                        PlanetarySystemID = (int) entry.SelectToken("planetarySystemID"),
+                                        Name = (string) entry.SelectToken("name"),
+                                        Classification = (string) entry.SelectToken("classification"),
+                                        Diameter = (long) entry.SelectToken("diameter"),
+                                        KnownMoons = (int) entry.SelectToken("knownMoons"),
+                                        OrbitDistance = (double) entry.SelectToken("orbitDistance"),
+                                        OrbitPeriod = (double) entry.SelectToken("orbitPeriod"),
                                     });
                             entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                                 .HasData(new
                                     {
-                                        PlanetID = planet["id"].Value<int>(),
-                                        Max = (float?) planet["surfaceTemperature"]["Max"].Value<float?>(),
-                                        Min = (float?) planet["surfaceTemperature"]["Min"].Value<float?>()
+                                        //   PlanetID = 1,
+                                        Max = (float?) entry.SelectToken("surfaceTemperature.max"),
+                                        Min = (float?) entry.SelectToken("surfaceTemperature.min")
                                     });
-                        }); 
-                }
+                        }
+                });
+            builder.Entity<Star>(entity =>
+                {
+                    foreach (var entry in stars)
+                        {
+                            entity.HasData(
+                                new Star
+                                    {
+                                        Name = (string) entry.SelectToken("name"),
+                                        Age = (int) entry.SelectToken("age"),
+                                        ID = (int) entry.SelectToken("id"),
+                                        PlanetarySystemID = (int) entry.SelectToken("planetarySystemID"),
+                                        Classification = (string) entry.SelectToken("classification"),
+                                        Diameter = (long) entry.SelectToken("diameter"),
+                                        AmountOrbitPlanet = (int) entry.SelectToken("amountOrbitPlanet")
+                                    });
+                            entity.OwnsOne<Temperature>(t => t.CoreTemperature)
+                                .HasData(new
+                                    {
+                                        Max = (float?) entry.SelectToken("coreTemperature.max"),
+                                        Min = (float?) entry.SelectToken("coreTemperature.min")
+                                    });
+                        }
+                });
 
             return builder;
         }
+
         
+        /// <summary>
+        /// Seed 2 <see cref="Planet"/> and a <see cref="PlanetarySystem"/> for minor tests EF.
+        /// </summary>
+        /// <param name="builder"> <see cref="ModelBuilder"/> exposed during OnModelCreating.</param>
+        /// <returns><see cref="ModelBuilder"/></returns>
         public static ModelBuilder SeedSunPlanetsCoded(this ModelBuilder builder)
         {
             builder.Entity<PlanetarySystem>(entity =>
@@ -105,9 +116,9 @@ namespace Services.UniverseService.Extensions.Seed
                                             Name = "Solar system",
                                             Age = 4600000000
                                         });
-                                /*entity.HasMany<Planet>()
+                                entity.HasMany<Planet>()
                                     .WithOne(p => p.System)
-                                    .HasForeignKey(k => k.PlanetarySystemID);*/
+                                    .HasForeignKey(k => k.PlanetarySystemID);
                             });
                     }
             );
@@ -128,13 +139,11 @@ namespace Services.UniverseService.Extensions.Seed
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                         .HasData(new
                             {
-                                PlanetID = 1,
+                                //  PlanetID = 1,
                                 Max = (float?) 427,
                                 Min = (float?) -173
                             });
                 });
-
-
             builder.Entity<Planet>(entity =>
                 {
                     entity.HasData(
@@ -152,17 +161,12 @@ namespace Services.UniverseService.Extensions.Seed
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                         .HasData(new
                             {
-                                PlanetID = 2,
-                                Max = (float?) 59,
-                                Min = (float?) -88
+                                //   PlanetID = 2,
+                                Max = (double) 59,
+                                Min = (double) -88
                             });
                 });
-
-            builder.Entity<Star>(entity =>
-                {
-                  
-                });
-
+            builder.Entity<Star>(entity => { });
 
             return builder;
         }

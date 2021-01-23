@@ -71,11 +71,12 @@ namespace Services.UniverseService.Context
                 });
 
             modelBuilder.SeedSunPlanetsCoded();
+            modelBuilder.SeedSunPlanetsJson();
 
-        
-    
 
-    //base.OnModelCreating(modelBuilder);
+
+
+            //base.OnModelCreating(modelBuilder);
         }
     }
 }

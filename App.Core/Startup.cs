@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using App.CLIghtFramework.Extensions.IOC;
+using App.UniverseExplorer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Services.UniverseService;
 using Services.UniverseService.Extensions.IOC;
@@ -14,7 +16,8 @@ namespace App.Core
 
         public void ConfigureServices(IServiceCollection services) =>
             services.UniverseAddEfService()
-                .AddScoped(typeof(MainApp))
+                .CLIghtAddDefaultWindow<MainWindow>()
+                //.AddScoped(typeof(MainWindow))
                 .BuildServiceProvider();
 
         /*public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
