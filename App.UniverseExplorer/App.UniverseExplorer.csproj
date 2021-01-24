@@ -6,6 +6,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\App.CLIghtFramework\App.CLIghtFramework.csproj" />
+      <ProjectReference Include="..\Services.Core.Models\Services.Core.Models.csproj" />
+      <ProjectReference Include="..\Services.Core\Services.Core.csproj" />
     </ItemGroup>
 
 </Project>

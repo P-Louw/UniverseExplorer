@@ -6,9 +6,9 @@ namespace App.CLIghtFramework.Extensions.Hosting
     public class ContextCli
     {
         private bool active = true;
-        private readonly IPlanetService _db;
+        private readonly IUniverseService _db;
 
-        public ContextCli(IPlanetService db) => 
+        public ContextCli(IUniverseService db) => 
             _db = db;
         
         public void Run()

@@ -44,36 +44,50 @@ namespace Services.UniverseService.Context
             modelBuilder.Entity<Comet>(entity =>
                 {
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature);
-                    entity.HasOne<PlanetarySystem>(p => p.System)
+                    /*entity.HasOne<PlanetarySystem>(p => p.System)
                         .WithMany(s => s.Comets)
-                        .HasForeignKey(k => k.PlanetarySystemID);
+                        .HasForeignKey(k => k.PlanetarySystemID);*/
                 });
             modelBuilder.Entity<Satellite>(entity =>
                 {
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature);
-                    entity.HasOne<PlanetarySystem>(p => p.System)
+                    /*entity.HasOne<PlanetarySystem>(p => p.System)
                         .WithMany(s => s.Satellites)
-                        .HasForeignKey(k => k.PlanetarySystemID);
+                        .HasForeignKey(k => k.PlanetarySystemID);*/
                 });
             modelBuilder.Entity<Planet>(entity =>
                 {
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature);
-                    entity.HasOne<PlanetarySystem>(p => p.System)
+                    /*entity.HasOne<PlanetarySystem>(p => p.System)
                         .WithMany(s => s.Planets)
-                        .HasForeignKey(k => k.PlanetarySystemID);
+                        .HasForeignKey(k => k.PlanetarySystemID);*/
                 });
             modelBuilder.Entity<Star>(entity =>
                 {
+                    entity.OwnsOne<Temperature>(t => t.CoreTemperature);
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature);
-                    entity.HasOne<PlanetarySystem>(p => p.System)
+                    /*entity.HasOne<PlanetarySystem>(p => p.System)
                         .WithMany(s => s.Stars)
+                         .HasForeignKey(k => k.PlanetarySystemID);*/
+                });
+            modelBuilder.Entity<PlanetarySystem>(entity =>
+                {
+                    entity.HasMany<Planet>(c => c.Planets)
+                        .WithOne(p => p.System)
+                        .HasForeignKey(k => k.PlanetarySystemID);
+                    entity.HasMany<Star>(s => s.Stars)
+                        .WithOne(p => p.System)
+                        .HasForeignKey(k => k.PlanetarySystemID);
+                    entity.HasMany<Satellite>(s => s.Satellites)
+                        .WithOne(p => p.System)
+                        .HasForeignKey(k => k.PlanetarySystemID);
+                    entity.HasMany<Comet>(c => c.Comets)
+                        .WithOne(p => p.System)
                         .HasForeignKey(k => k.PlanetarySystemID);
                 });
 
-            modelBuilder.SeedSunPlanetsCoded();
+            //modelBuilder.SeedSunPlanetsCoded();
             modelBuilder.SeedSunPlanetsJson();
-
-
 
 
             //base.OnModelCreating(modelBuilder);

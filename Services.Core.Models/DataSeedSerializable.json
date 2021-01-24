@@ -39,14 +39,14 @@
       "system": null
     },
     {
-      "orbitDistance": 149.6,
+      "orbitDistance": 149600000,
       "orbitPeriod": 365.2,
       "knownMoons": 1,
       "id": 2,
       "planetarySystemID": 1,
       "name": "Earth",
-      "classification": null,
-      "diameter":12756000000 ,
+      "classification": "Planet",
+      "diameter":12756 ,
       "surfaceTemperature": {
         "max": 58,
         "min": -88
@@ -96,7 +96,7 @@
       "planetarySystemID": 1,
       "name": "Ceres",
       "classification": "Planet",
-      "diameter": 142984,
+      "diameter": 950,
       "surfaceTemperature": {
         "max": 0.0,
         "min": -108
@@ -210,7 +210,7 @@
       "planetarySystemID": 1,
       "name": "makemake",
       "classification": "Dwarf planet",
-      "diameter": 0,
+      "diameter": 14344,
       "surfaceTemperature": {
         "max": 0.0,
         "min": -239
@@ -223,10 +223,10 @@
       "orbitPeriod": 560.9,
       "knownMoons": 1,
       "id": 13,
-      "planetarySystemID": 0,
+      "planetarySystemID": 1,
       "name": "Eris",
       "classification": "Dwarf planet",
-      "diameter": 0,
+      "diameter": 2326,
       "surfaceTemperature": {
         "max": 0.0,
         "min": -213

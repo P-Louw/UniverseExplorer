@@ -14,9 +14,9 @@ namespace App.Core
     class Program
     {
         public static async Task Main(string[] args) =>
-            CreateHostBuilder(args).Build().Run()
+            CreateHostBuilder(args).Build()
                 .Services.GetService<MainWindow>()
-                .Run();
+                .OnWindowLoad();
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)

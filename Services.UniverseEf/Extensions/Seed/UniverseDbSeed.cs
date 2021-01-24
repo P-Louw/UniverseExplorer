@@ -25,7 +25,7 @@ namespace Services.UniverseService.Extensions.Seed
         public static ModelBuilder SeedSunPlanetsJson(this ModelBuilder builder)
         {
             var tokenDict = ImportBuilder.SeedDataJTokens();
-            var planets = tokenDict["Planets"];
+            var planets = tokenDict["Planet"];
             var stars = tokenDict["Star"];
 
             builder.Entity<PlanetarySystem>(entity =>
@@ -53,7 +53,7 @@ namespace Services.UniverseService.Extensions.Seed
                                 new Planet
                                     {
                                         ID = (int) entry.SelectToken("id"),
-                                        PlanetarySystemID = (int) entry.SelectToken("planetarySystemID"),
+                                        PlanetarySystemID = 1,//(int) entry.SelectToken("planetarySystemID"),
                                         Name = (string) entry.SelectToken("name"),
                                         Classification = (string) entry.SelectToken("classification"),
                                         Diameter = (long) entry.SelectToken("diameter"),
@@ -64,7 +64,7 @@ namespace Services.UniverseService.Extensions.Seed
                             entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                                 .HasData(new
                                     {
-                                        //   PlanetID = 1,
+                                        PlanetID = (int) entry.SelectToken("id"),
                                         Max = (float?) entry.SelectToken("surfaceTemperature.max"),
                                         Min = (float?) entry.SelectToken("surfaceTemperature.min")
                                     });
@@ -78,8 +78,8 @@ namespace Services.UniverseService.Extensions.Seed
                                 new Star
                                     {
                                         Name = (string) entry.SelectToken("name"),
-                                        Age = (int) entry.SelectToken("age"),
                                         ID = (int) entry.SelectToken("id"),
+                                        Age = (ulong) entry.SelectToken("age"),
                                         PlanetarySystemID = (int) entry.SelectToken("planetarySystemID"),
                                         Classification = (string) entry.SelectToken("classification"),
                                         Diameter = (long) entry.SelectToken("diameter"),
@@ -88,8 +88,14 @@ namespace Services.UniverseService.Extensions.Seed
                             entity.OwnsOne<Temperature>(t => t.CoreTemperature)
                                 .HasData(new
                                     {
+                                        StarID = (int) entry.SelectToken("id"),
                                         Max = (float?) entry.SelectToken("coreTemperature.max"),
                                         Min = (float?) entry.SelectToken("coreTemperature.min")
+                                    });
+                            entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
+                                .HasData(new
+                                    {
+                                        StarID = (int) entry.SelectToken("id"),
                                     });
                         }
                 });
@@ -107,19 +113,13 @@ namespace Services.UniverseService.Extensions.Seed
         {
             builder.Entity<PlanetarySystem>(entity =>
                     {
-                        builder.Entity<PlanetarySystem>(entity =>
-                            {
-                                entity.HasData(
-                                    new PlanetarySystem
-                                        {
-                                            ID = 1,
-                                            Name = "Solar system",
-                                            Age = 4600000000
-                                        });
-                                entity.HasMany<Planet>()
-                                    .WithOne(p => p.System)
-                                    .HasForeignKey(k => k.PlanetarySystemID);
-                            });
+                        builder.Entity<PlanetarySystem>().HasData(
+                                new PlanetarySystem
+                                    {
+                                        ID = 1,
+                                        Name = "Solar system",
+                                        Age = 4600000000
+                                    }); 
                     }
             );
             builder.Entity<Planet>(entity =>
@@ -139,7 +139,7 @@ namespace Services.UniverseService.Extensions.Seed
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                         .HasData(new
                             {
-                                //  PlanetID = 1,
+                                PlanetID = 1,
                                 Max = (float?) 427,
                                 Min = (float?) -173
                             });
@@ -161,9 +161,9 @@ namespace Services.UniverseService.Extensions.Seed
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                         .HasData(new
                             {
-                                //   PlanetID = 2,
-                                Max = (double) 59,
-                                Min = (double) -88
+                                PlanetID = 2,
+                                Max = (float?) 59,
+                                Min = (float?) -88
                             });
                 });
             builder.Entity<Star>(entity => { });

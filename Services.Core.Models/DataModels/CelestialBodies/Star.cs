@@ -8,7 +8,7 @@ namespace Services.Core.DataModels.CelestialBodies
      
         public int AmountOrbitPlanet { get; set; }
         public Temperature CoreTemperature { get; set; }
-        public long Age { get; set; }
+        public ulong Age { get; set; }
     }
 }
 
