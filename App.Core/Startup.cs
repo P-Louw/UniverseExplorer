@@ -16,8 +16,8 @@ namespace App.Core
 
         public void ConfigureServices(IServiceCollection services) =>
             services.UniverseAddEfService()
-                .CLIghtAddDefaultWindow<MainWindow>()
-                //.AddScoped(typeof(MainWindow))
+                //.CLIghtAddDefaultWindow<MainWindow>()
+                .AddTransient<MainWindow>()
                 .BuildServiceProvider();
 
         /*public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -64,7 +64,7 @@
       "classification": "Planet",
       "diameter": 12104,
       "surfaceTemperature": {
-        "max": 365.2,
+        "max": 462,
         "min": 0.0
       }
     ,
@@ -95,7 +95,7 @@
       "id": 5,
       "planetarySystemID": 1,
       "name": "Ceres",
-      "classification": "Planet",
+      "classification": "Dwarf planet",
       "diameter": 950,
       "surfaceTemperature": {
         "max": 0.0,
@@ -177,7 +177,7 @@
       "id": 10,
       "planetarySystemID": 1,
       "name": "Pluto",
-      "classification": "Planet",
+      "classification": "Dwarf planet",
       "diameter": 2306,
       "surfaceTemperature": {
         "max": 229,

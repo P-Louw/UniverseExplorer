@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Services.Core.DataModels.CelestialBodies;
 using Services.Core.DataModels.Units;
+using Services.Core.Models.DTO;
 using Services.UniverseService.Context;
 
 namespace Services.UniverseService
@@ -27,10 +28,10 @@ namespace Services.UniverseService
                 .Select(r => r);
 
         public IEnumerable<Planet> PlanetNameLetterConstraint() =>
-            _db.Planets.AsEnumerable()
-                .Where(p => "pt".All(c => p.Name.Contains(c)));
+            _db.Planets.Where(p => "pt".All(c =>
+                p.Name.Contains(c, StringComparison.OrdinalIgnoreCase)));
 
-        public IEnumerable<Planet> PlanetsByNameDescending() =>
+        public IEnumerable<Planet> PlanetsNameLengthDescending() =>
             _db.Planets.Select(p => p)
                 .OrderByDescending(v => v.Name.Length);
 
@@ -39,37 +40,42 @@ namespace Services.UniverseService
 
         public IEnumerable<Planet> DwarfPlanetByMoonAmount() =>
             _db.Planets
+                .AsEnumerable()
                 .Where(p => p.Classification == "Dwarf planet")
                 .OrderBy(d => d.KnownMoons);
 
         public int TotalMoons() =>
             // TODO: implement universe class to aggregate moon count.
-            _db.Planets.Select(g => g.KnownMoons)
-                .Sum();
+            _db.Planets.Select(g => g.KnownMoons).Sum();
 
         public IEnumerable<Planet> DwarfPlanetsSortedDiameter() =>
             _db.Planets.Where(p => p.Classification == "Dwarf planet")
                 .OrderBy(v => v.Diameter);
 
-        public int AverageMoonsPerDwarfPlanet()
+        public double AverageMoonsPerDwarfPlanet()
         {
-            var inter = _db.Planets
-                .Where(p => p.Classification == "Dwarf planet")
+            var inter = _db.Planets.Where(c =>
+                    EF.Functions.Like(c.Classification, "Dwarf planet"))
                 .Select(c => c.KnownMoons);
 
             var res = _db.Planets
                 .Where(v => v.Classification == "Dwarf planet")
                 .Average(p => p.KnownMoons);
 
+            var sum = inter.Sum();
+
+            var count = inter.Count();
+
+            var prod = sum / count;
             return inter.Sum() / inter.Count();
         }
 
         public Dictionary<string, float?> AverageSurfaceTemps()
         {
             // TODO: remove dictionary, cleanup etc..
-            var cached = _db.PlanetarySystems
+            /*var cached = _db.PlanetarySystems
                 .Select(x => x)
-                .Where(v => v.ID == 1);
+                .Where(v => v.ID == 1);*/
 
             /*var k = from y in cached.Select(s => s.Planets)
                 select (new
@@ -90,13 +96,11 @@ namespace Services.UniverseService
             //var b = _db.Planets.Where(v => v.Name != "Dwarf planet");
             var resultDict = new Dictionary<string, float?>
                 {
-                    {"Dwarf planets", 0},
-                    {"Planets", 0},
+                    {"Dwarf planet", 0},
+                    {"Planet", 0},
                     {"Sun", 0}
                 };
-            var planets = cached
-                .Select(x => x.Planets)
-                .FirstOrDefault();
+            var planets = _db.Planets;
 
             foreach (var temp in planets)
                 {
@@ -104,13 +108,13 @@ namespace Services.UniverseService
                         ? (temp.SurfaceTemperature.Max + temp.SurfaceTemperature.Min) / 2
                         : temp.SurfaceTemperature.Max;
 
-                    if (temp.Name == "Dwarf planet")
-                        resultDict[temp.Name] += avgTemp;
+                    if (temp.Classification == "Dwarf planet")
+                        resultDict[temp.Classification] += avgTemp;
                     else
-                        resultDict["Planets"] += avgTemp;
+                        resultDict["Planet"] += avgTemp;
                 }
 
-            resultDict["sun"] += cached
+            resultDict["Sun"] += _db.PlanetarySystems
                 .Select(v => v.Stars)
                 .First().Select(s => s.CoreTemperature.Max).Sum();
             return resultDict;
@@ -128,27 +132,29 @@ namespace Services.UniverseService
                     }).AsEnumerable();
 
 
-        public IEnumerable ClosestNeighbourPlanets()
-        {
-            var cachedEntities = _db.Planets;
-            return cachedEntities
-                .SelectMany(x =>
-                        cachedEntities, (x, y) =>
-                        new {x, y}
-                )
-                .Select(measure => new
-                        {
-                            measure, distance = Math.Abs(measure.x.OrbitDistance - measure.y.OrbitDistance)
-                        }
-                )
-                .OrderBy(d => d.distance)
-                .Select(entry => new
+        public TwoPlanetDifference ClosestNeighbourPlanets() =>
+            _db.Planets.SelectMany(p1 =>
+                    _db.Planets, (p1, p2) => new
                     {
-                        aPlanet = entry.measure.x,
-                        otherPlanet = entry.measure.y,
-                        shortDistance = entry.distance
-                    });
-        }
+                        p1,
+                        p2
+                    })
+                .Select(measure => new
+                    {
+                        measure,
+                        distance = measure.p1.OrbitDistance - measure.p2.OrbitDistance
+                    })
+                .AsEnumerable()
+                .Where(p => !object.ReferenceEquals(p.measure.p1, p.measure.p2))
+                .OrderBy(e => e.distance)
+                .Select(res => new TwoPlanetDifference()
+                    {
+                        PlanetA = res.measure.p1,
+                        PlanetB = res.measure.p2,
+                        MeasuredDistance = res.distance
+                    })
+                .First();
+
 
         public void TestMethod()
         {

@@ -16,7 +16,7 @@ namespace App.CLIghtFramework.Extensions.IOC
         public static IServiceCollection CLIghtAddDefaultWindow<T>(this IServiceCollection services) 
             where T : CLIghtWindow
         {
-            services.AddScoped<ICLIghtContext, T>();
+            services.AddScoped<T>();
             return services;
         }
     }

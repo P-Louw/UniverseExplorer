@@ -58,8 +58,8 @@ namespace Services.UniverseService.Extensions.Seed
                                         Classification = (string) entry.SelectToken("classification"),
                                         Diameter = (long) entry.SelectToken("diameter"),
                                         KnownMoons = (int) entry.SelectToken("knownMoons"),
-                                        OrbitDistance = (double) entry.SelectToken("orbitDistance"),
-                                        OrbitPeriod = (double) entry.SelectToken("orbitPeriod"),
+                                        OrbitDistance = (ulong) entry.SelectToken("orbitDistance"),
+                                        OrbitPeriod = (ulong) entry.SelectToken("orbitPeriod"),
                                     });
                             entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                                 .HasData(new
@@ -134,7 +134,7 @@ namespace Services.UniverseService.Extensions.Seed
                                 Diameter = 4879,
                                 KnownMoons = 0,
                                 OrbitDistance = 57900000,
-                                OrbitPeriod = 88.0
+                                OrbitPeriod = (ulong) 88.0
                             });
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                         .HasData(new
@@ -155,8 +155,8 @@ namespace Services.UniverseService.Extensions.Seed
                                 Classification = nameof(Planet),
                                 Diameter = 12756000000,
                                 KnownMoons = 1,
-                                OrbitDistance = 149.6,
-                                OrbitPeriod = 365.2,
+                                OrbitDistance = (ulong) 149.6,
+                                OrbitPeriod = (ulong) 365.2,
                             });
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                         .HasData(new

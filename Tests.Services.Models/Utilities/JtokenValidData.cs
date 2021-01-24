@@ -51,8 +51,8 @@ namespace Tests.Services.Models.Utilities
                     var planet = new Planet();
 
                     planet.Name = (string) entry.SelectToken("name");
-                    planet.OrbitDistance = (double) entry.SelectToken("orbitDistance");
-                    planet.OrbitPeriod = (double) entry.SelectToken("orbitPeriod");
+                    planet.OrbitDistance = (ulong) entry.SelectToken("orbitDistance");
+                    planet.OrbitPeriod = (ulong) entry.SelectToken("orbitPeriod");
                     planet.KnownMoons = (int) entry.SelectToken("knownMoons");
                     planet.ID = (int) entry.SelectToken("id");
                     planet.PlanetarySystemID = (int) entry.SelectToken("planetarySystemID");
@@ -60,7 +60,7 @@ namespace Tests.Services.Models.Utilities
                     planet.Diameter = (long) entry.SelectToken("diameter");
                     var min = (double) entry.SelectToken("surfaceTemperature.min");
                     var max = (double) entry.SelectToken("surfaceTemperature.max");
-                    planet.OrbitPeriod = (double) entry.SelectToken("orbitPeriod");
+                    planet.OrbitPeriod = (ulong) entry.SelectToken("orbitPeriod");
                     var e = entry.SelectToken("id");
                 }
         }
