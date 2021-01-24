@@ -17,9 +17,8 @@ namespace Services.UniverseService
         int TotalMoons();                                   // 8  [x]
         IEnumerable<Planet> DwarfPlanetsSortedDiameter();   // 9  [x]
         double AverageMoonsPerDwarfPlanet();                   // 10 [x]..
-        Dictionary<string, float?> AverageSurfaceTemps();   // 11 [x]..
+        IEnumerable<TemperatureResults> AverageSurfaceTemps();   // 11 [x]..
         IEnumerable TotalBodyAmount();                      // 12 [x]..
         TwoPlanetDifference ClosestNeighbourPlanets();      // 13 []
-        void TestMethod();
     }
 }

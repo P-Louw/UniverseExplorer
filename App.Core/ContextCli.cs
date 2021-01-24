@@ -17,7 +17,6 @@ namespace App.CLIghtFramework.Extensions.Hosting
                 {
                     var tmpTest = _db.AverageSurfaceTemps();
                     WriteLine(tmpTest); 
-                    _db.TestMethod();
                     var a = _db.PlanetsOrderedAlphabetical();
                     foreach(var planet in a) WriteLine(planet.Name);
                     var b = _db.TotalMoons();
