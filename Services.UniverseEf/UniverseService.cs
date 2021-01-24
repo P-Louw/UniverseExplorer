@@ -40,7 +40,7 @@ namespace Services.UniverseService
 
         public IEnumerable<Planet> DwarfPlanetByMoonAmount() =>
             _db.Planets
-                .AsEnumerable()
+               // .AsEnumerable()
                 .Where(p => p.Classification == "Dwarf planet")
                 .OrderBy(d => d.KnownMoons);
 
@@ -56,18 +56,38 @@ namespace Services.UniverseService
         {
             var inter = _db.Planets.Where(c =>
                     EF.Functions.Like(c.Classification, "Dwarf planet"))
-                .Select(c => c.KnownMoons);
+                .Aggregate(0 ,(a, b) => a + b.KnownMoons);
+                
+            var aggr = _db.Planets.Where(c =>
+                    EF.Functions.Like(c.Classification, "Dwarf planet"))
+                .Average(p => p.KnownMoons);
+                
+                
+            /*var bod = from s in _db.Planets
+                where s.Classification == "Dwarf planet"
+                into foo
+                select 
+                new
+                    {
+                        count = foo. Count(),
+                        sum = foo.Sum(n => n.KnownMoons)
+                    };*/
+                     //           .Select(m => m.sum / m.sum);
+                
+               // .Select(c => c.KnownMoons);
+            
+        
 
             var res = _db.Planets
                 .Where(v => v.Classification == "Dwarf planet")
                 .Average(p => p.KnownMoons);
 
-            var sum = inter.Sum();
+            //var sum = inter.Sum();
 
-            var count = inter.Count();
+           // var count = inter.Count();
 
-            var prod = sum / count;
-            return inter.Sum() / inter.Count();
+            //var prod = sum / count;
+            return 1; //inter.Sum() / inter.Count();
         }
 
         public Dictionary<string, float?> AverageSurfaceTemps()
