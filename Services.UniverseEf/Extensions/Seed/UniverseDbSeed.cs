@@ -58,8 +58,8 @@ namespace Services.UniverseService.Extensions.Seed
                                         Classification = (string) entry.SelectToken("classification"),
                                         Diameter = (long) entry.SelectToken("diameter"),
                                         KnownMoons = (int) entry.SelectToken("knownMoons"),
-                                        OrbitDistance = (ulong) entry.SelectToken("orbitDistance"),
-                                        OrbitPeriod = (ulong) entry.SelectToken("orbitPeriod"),
+                                        OrbitDistance = (long) entry.SelectToken("orbitDistance"),
+                                        OrbitPeriod = (long) entry.SelectToken("orbitPeriod"),
                                     });
                             entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                                 .HasData(new
@@ -134,7 +134,7 @@ namespace Services.UniverseService.Extensions.Seed
                                 Diameter = 4879,
                                 KnownMoons = 0,
                                 OrbitDistance = 57900000,
-                                OrbitPeriod = (ulong) 88.0
+                                OrbitPeriod = (long) 88.0
                             });
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                         .HasData(new
@@ -155,8 +155,8 @@ namespace Services.UniverseService.Extensions.Seed
                                 Classification = nameof(Planet),
                                 Diameter = 12756000000,
                                 KnownMoons = 1,
-                                OrbitDistance = (ulong) 149.6,
-                                OrbitPeriod = (ulong) 365.2,
+                                OrbitDistance = (long) 149.6,
+                                OrbitPeriod = (long) 365.2,
                             });
                     entity.OwnsOne<Temperature>(t => t.SurfaceTemperature)
                         .HasData(new

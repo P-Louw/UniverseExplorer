@@ -6,6 +6,6 @@ namespace Services.Core.Models.DTO
     {
         public Planet PlanetA { get; set; }
         public Planet PlanetB { get; set; }
-        public ulong MeasuredDistance { get; set; }
+        public long MeasuredDistance { get; set; }
     }
 }

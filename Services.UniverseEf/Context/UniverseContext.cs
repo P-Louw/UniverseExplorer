@@ -25,7 +25,7 @@ namespace Services.UniverseService.Context
             if (!optionsBuilder.IsConfigured)
                 {
                     optionsBuilder.UseSqlServer(
-                        "Server=localhost,1433;Database=PlanetDb;User=sa;Password=Pa55w0rd");
+                        "Server=localhost,1433;Database=DevelopUniverseDb;User=sa;Password=Pa55w0rd");
                 }
         }
 

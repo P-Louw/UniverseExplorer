@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Markup;
 using Microsoft.EntityFrameworkCore;
 using Services.Core.DataModels.CelestialBodies;
 using Services.Core.DataModels.Units;
@@ -30,7 +29,8 @@ namespace Services.UniverseService
                 .Select(r => r);
 
         public IEnumerable<Planet> PlanetNameLetterConstraint() =>
-            _db.Planets.Where(p => "pt".All(c =>
+            _db.Planets.AsEnumerable()
+                .Where(p => "pt".All(c =>
                 p.Name.Contains(c, StringComparison.OrdinalIgnoreCase)));
 
         public IEnumerable<Planet> PlanetsNameLengthDescending() =>
@@ -71,7 +71,7 @@ namespace Services.UniverseService
                     });
 
 
-        public IEnumerable TotalBodyAmount() =>
+        /*public IEnumerable TotalBodyAmount() =>
             _db.PlanetarySystems.Where(d => d.ID == 1)
                 .Select(sub => new
                     {
@@ -80,8 +80,12 @@ namespace Services.UniverseService
                         satelliteAmount = sub.Satellites.Count,
                         stars = sub.Stars.Count
                     })
-                .AsEnumerable();
-
+                .AsEnumerable();*/
+        public int TotalBodyAmount() =>
+            _db.PlanetarySystems.Select(l => l.Planets.Count +
+                                             l.Satellites.Count +
+                                             l.Comets.Count)
+                .FirstOrDefault();
 
         public TwoPlanetDifference ClosestNeighbourPlanets() =>
             _db.Planets.SelectMany(p1 =>
@@ -90,23 +94,23 @@ namespace Services.UniverseService
                         p1,
                         p2
                     })
+                .Where(p => p.p1.ID != p.p2.ID)
                 .Select(measure => new
                     {
-                        measure,
-                        distance = measure.p1.OrbitDistance - measure.p2.OrbitDistance
+                        PlanetA = measure.p1,
+                        PlanetB = measure.p2,
+                        MeasuredDistance = measure.p1.OrbitDistance < measure.p2.OrbitDistance
+                            ? measure.p2.OrbitDistance % measure.p1.OrbitDistance
+                            : measure.p1.OrbitDistance % measure.p2.OrbitDistance
                     })
-                // .AsEnumerable()
-                .Where(p => !object.ReferenceEquals(p.measure.p1, p.measure.p2))
-                .OrderBy(e => e.distance)
+                //.Where(p => p.MeasuredDistance != 0)
+                .OrderBy(e => e.MeasuredDistance)
                 .Select(res => new TwoPlanetDifference()
                     {
-                        PlanetA = res.measure.p1,
-                        PlanetB = res.measure.p2,
-                        MeasuredDistance = res.distance
+                        PlanetA = res.PlanetA,
+                        PlanetB = res.PlanetB,
+                        MeasuredDistance = res.MeasuredDistance
                     })
                 .First();
-
-
-
     }
 }

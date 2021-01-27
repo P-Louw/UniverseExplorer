@@ -14,6 +14,7 @@ namespace Tests.Services.Models.Utilities
     public class JtokenValidData
     {
         [Test]
+        [Category("Json tokenizer")]
         public void ShouldReturnArraySunPlanet()
         {
             string[] arrayNames = new[] {"Planet", "Star"};
@@ -41,6 +42,7 @@ namespace Tests.Services.Models.Utilities
         }
 
         [Test]
+        [Category("Json tokenizer")]
         public void TokensShouldHaveValues()
         {
             var sut = ImportBuilder.SeedDataJTokens();
@@ -51,8 +53,8 @@ namespace Tests.Services.Models.Utilities
                     var planet = new Planet();
 
                     planet.Name = (string) entry.SelectToken("name");
-                    planet.OrbitDistance = (ulong) entry.SelectToken("orbitDistance");
-                    planet.OrbitPeriod = (ulong) entry.SelectToken("orbitPeriod");
+                    planet.OrbitDistance = (long) entry.SelectToken("orbitDistance");
+                    planet.OrbitPeriod = (long) entry.SelectToken("orbitPeriod");
                     planet.KnownMoons = (int) entry.SelectToken("knownMoons");
                     planet.ID = (int) entry.SelectToken("id");
                     planet.PlanetarySystemID = (int) entry.SelectToken("planetarySystemID");
@@ -60,7 +62,7 @@ namespace Tests.Services.Models.Utilities
                     planet.Diameter = (long) entry.SelectToken("diameter");
                     var min = (double) entry.SelectToken("surfaceTemperature.min");
                     var max = (double) entry.SelectToken("surfaceTemperature.max");
-                    planet.OrbitPeriod = (ulong) entry.SelectToken("orbitPeriod");
+                    planet.OrbitPeriod = (long) entry.SelectToken("orbitPeriod");
                     var e = entry.SelectToken("id");
                 }
         }

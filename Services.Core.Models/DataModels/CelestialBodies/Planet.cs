@@ -7,8 +7,8 @@ namespace Services.Core.DataModels.CelestialBodies
 {
     public class Planet : AstronomicalBody
     {
-        public ulong OrbitDistance { get; set; }
-        public ulong OrbitPeriod{ get; set; }
+        public long OrbitDistance { get; set; }
+        public long OrbitPeriod{ get; set; }
         public int KnownMoons { get; set; }
     }
 }

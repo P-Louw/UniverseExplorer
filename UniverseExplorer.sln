@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.CLIghtFramework", "App.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.UniverseExplorer", "App.UniverseExplorer\App.UniverseExplorer.csproj", "{6D7D63AB-8155-4144-A693-318566BF3A68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.App.CLIghtFramework", "Tests.App.CLIghtFramework\Tests.App.CLIghtFramework.csproj", "{2F6D86F5-9ABB-42B6-B16A-221C803A9B90}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Services.Models", "Tests.Services.Models\Tests.Services.Models.csproj", "{5242CD8B-EE84-4A3A-BD37-2988B99C264A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Services.UniverseEf", "Tests.Services.UniverseEf\Tests.Services.UniverseEf.csproj", "{A8FA6EAC-E961-40CB-8A76-FF5156C00644}"
@@ -48,10 +46,6 @@ Global
 		{6D7D63AB-8155-4144-A693-318566BF3A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D7D63AB-8155-4144-A693-318566BF3A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D7D63AB-8155-4144-A693-318566BF3A68}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F6D86F5-9ABB-42B6-B16A-221C803A9B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F6D86F5-9ABB-42B6-B16A-221C803A9B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F6D86F5-9ABB-42B6-B16A-221C803A9B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F6D86F5-9ABB-42B6-B16A-221C803A9B90}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5242CD8B-EE84-4A3A-BD37-2988B99C264A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5242CD8B-EE84-4A3A-BD37-2988B99C264A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5242CD8B-EE84-4A3A-BD37-2988B99C264A}.Release|Any CPU.ActiveCfg = Release|Any CPU
