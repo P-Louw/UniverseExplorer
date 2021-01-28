@@ -1,6 +1,5 @@
 
 <h2> Universe explorer <h2> 
----
 :milky_way:
 
 A simple console application that queries a SQL data base for
