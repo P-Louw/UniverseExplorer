@@ -1,5 +1,5 @@
 
-<h2>**Universe explorer**<h2> 
+<h2> __Universe explorer__ <h2> 
 ---
 :milky_way:
 
