@@ -4,6 +4,18 @@
 A simple console application that queries a SQL data base for
 some simple solar facts.
 
+To run migrations apply the following commands from the root folder 'UniverseExplorer\..'
+
+Create migration:
+```
+dotnet ef --startup-project .\App.Core\App.Core.csproj --project .\Services.UniverseEf\ migrations add UniverseMigration
+```
+
+Apply migration:
+```
+dotnet ef --startup-project .\App.Core\App.Core.csproj --project .\Services.Uni database update UniverseMigration
+```
+
 Additional features need to be added or updated, see tasks lists.
 
 
