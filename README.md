@@ -31,6 +31,8 @@ dotnet ef --startup-project ..\App.Core\App.Core.csproj database update Universe
 	- Celsius.
 	- Fahrenheit.
 - [ ] remove hardcode 'SolarSystem' data.
+- [ ] Update model serializer.
+- [ ] Remove temp tokenizer for serializer again.
 - [ ] Implement custom formatting for displaying DTO data.
 - [ ] Use body classification object/enum instead of strings.
 - [ ] Add GUI.cs views.

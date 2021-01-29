@@ -41,7 +41,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 2")]
-        [Category("InMemoryDb")]
         public void PlanetsOrderedAlphabeticalShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -69,7 +68,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 3")]
-        [Category("InMemoryDb")]
         public void PlanetsTempAboveZeroShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -94,7 +92,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 4")]
-        [Category("InMemoryDb")]
         public void NameLetterConstraintShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -119,7 +116,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 5")]
-        [Category("InMemoryDb")]
         public void NameLengthDescendingShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -140,7 +136,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 6")]
-        [Category("InMemoryDb")]
         public void DistanceToSunShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -162,7 +157,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 7")]
-        [Category("InMemoryDb")]
         public void ByMoonAmountShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -187,7 +181,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 8")]
-        [Category("InMemoryDb")]
         public void TotalMoonsShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -208,7 +201,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 9")]
-        [Category("InMemoryDb")]
         public void DwarfSortedByDiameterShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -228,7 +220,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 10")]
-        [Category("InMemoryDb")]
         public void DwarfAverageMoonsShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -249,7 +240,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 11")]
-        [Category("InMemoryDb")]
         public void AverageSurfaceTempShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -275,7 +265,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 12")]
-        [Category("InMemoryDb")]
         public void TotalBodyAmountShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -295,7 +284,6 @@ namespace Tests.Services.UniverseEf
 
         [Test]
         [Category("Assignment: 13")]
-        [Category("InMemoryDb")]
         public void ClosestPlanetsShouldReturn()
         {
             using (var context = new UniverseContext(options))

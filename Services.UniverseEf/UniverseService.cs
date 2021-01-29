@@ -48,7 +48,7 @@ namespace Services.UniverseService
         public IEnumerable<Planet> DwarfPlanetByMoonAmount() =>
             _db.Planets
                 // .AsEnumerable()
-                .Where(p => p.Classification == "Dwarf planet")
+                .Where(p => String.Equals(p.Classification,  "Dwarf planet", StringComparison.OrdinalIgnoreCase))
                 .OrderBy(d => d.KnownMoons);
 
         
@@ -57,7 +57,7 @@ namespace Services.UniverseService
 
         
         public IEnumerable<Planet> DwarfPlanetsSortedDiameter() =>
-            _db.Planets.Where(p => p.Classification == "Dwarf planet")
+            _db.Planets.Where(p => String.Equals(p.Classification,"Dwarf planet", StringComparison.OrdinalIgnoreCase))
                 .OrderBy(v => v.Diameter);
 
         
