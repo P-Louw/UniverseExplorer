@@ -1,7 +1,7 @@
 
 # Universe explorer :milky_way:
 
-A simple console application that queries a SQL data base for
+A simple console application that queries a SQL database for
 some solar facts.
 
 *App.UniverseExplorer/GUI/ & App.Core/Scenes/ contains files for display but have not been implemented yet.*
