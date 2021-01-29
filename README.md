@@ -6,6 +6,8 @@ some solar facts.
 
 *App.UniverseExplorer/GUI/ & App.Core/Scenes/ contains files for display but have not been implemented yet.*
 
+Migrations
+===
 Set connectionstring in 'appsettings.json' in the 'DevelopUniverseDb' section.
 To run migrations apply the following commands from the service folder 'UniverseExplorer\Services.UniverseEf\'
 
