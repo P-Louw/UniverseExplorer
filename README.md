@@ -8,7 +8,7 @@ some solar facts.
 
 Migrations
 ===
-Set connectionstring in 'appsettings.json' in the 'DevelopUniverseDb' section.
+Set connectionstring in 'appsettings.json' in the 'DevelopUniverseDb' section. Appsettings file is located in 'App.Core'
 To run migrations apply the following commands from the service folder 'UniverseExplorer\Services.UniverseEf\'
 
 Create migration:
