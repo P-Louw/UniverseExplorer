@@ -22,13 +22,15 @@ namespace Tests.Services.UniverseEf
     {
         private IUniverseService sut;
         private DbContextOptions<UniverseContext> options;
+        private Func<UniverseContext> ctx;
 
         [SetUp]
         public void Setup()
         {
-            options = ContextBuilder.GetInMemoryDbContextOptions();
+            options = ContextBuilder.InitDbInMem();
+            ctx  = () => new UniverseContext(options);
         }
-
+                
         [TearDown]
         public void CleanUp()
         {
@@ -58,7 +60,7 @@ namespace Tests.Services.UniverseEf
 
                     Assert.That(result.Select(n => n.Name),
                         Is.Ordered.Ascending);
-                     //   Is.EqualTo(ValidSimpleData.ExpectedAlphabetical));
+                    //   Is.EqualTo(ValidSimpleData.ExpectedAlphabetical));
 
                     Assert.That(result, Has.Count.EqualTo(14));
                 }
@@ -80,9 +82,9 @@ namespace Tests.Services.UniverseEf
                     var result = sut.PlanetsTempAboveZero();
 
                     // Assert:
-                    foreach (var cat in result.Select(p => p.Classification))
-                            StringAssert.AreEqualIgnoringCase("Planet", cat);
-                    
+                    foreach (var category in result.Select(p => p.Classification))
+                        StringAssert.AreEqualIgnoringCase("Planet", category);
+
                     var temperatures = result.Select(r => r.SurfaceTemperature);
                     foreach (Temperature temp in temperatures)
                         Assert.That(new[] {temp.Max, temp.Min}, Has.Some.Positive);
@@ -106,11 +108,11 @@ namespace Tests.Services.UniverseEf
 
                     // Assert:
                     foreach (var cat in result.Select(p => p.Classification))
-                            StringAssert.AreEqualIgnoringCase("Planet", cat);
-                    
+                        StringAssert.AreEqualIgnoringCase("Planet", cat);
+
                     Assert.That(result.Count(), Is.EqualTo(4));
                     foreach (var name in result.Select(p => p.Name))
-                            StringAssert.IsMatch(@"[ptPT]",name);
+                        StringAssert.IsMatch(@"[ptPT]", name);
                 }
         }
 
@@ -130,9 +132,9 @@ namespace Tests.Services.UniverseEf
                     var result = sut.PlanetsNameLengthDescending();
 
                     // Assert:
-                    Assert.That(result.Select(v => 
+                    Assert.That(result.Select(v =>
                         v.Name.Length), Is.Ordered.Descending);
-                }  
+                }
         }
 
         [Test]
@@ -151,9 +153,9 @@ namespace Tests.Services.UniverseEf
                     var result = sut.PlanetDistanceToSunAscending();
 
                     // Assert:
-                    Assert.That(result.Select(v => 
+                    Assert.That(result.Select(v =>
                         v.Name.Length), Is.Ordered.Ascending);
-                } 
+                }
         }
 
 
@@ -175,13 +177,13 @@ namespace Tests.Services.UniverseEf
                     // Assert:
                     var categories = result.Select(v => v.Classification);
                     foreach (var category in categories)
-                           Assert.That(category, Is.EqualTo("Dwarf planet")); 
-                    
-                    Assert.That(result.Select( m => m.KnownMoons), Is.Ordered);
-                }  
+                        Assert.That(category, Is.EqualTo("Dwarf planet"));
+
+                    Assert.That(result.Select(m => m.KnownMoons), Is.Ordered);
+                }
         }
-        
-        
+
+
         [Test]
         [Category("Assignment: 8")]
         [Category("InMemoryDb")]
@@ -220,7 +222,7 @@ namespace Tests.Services.UniverseEf
 
                     // Assert:
                     Assert.That(result.Select(p => p.Diameter), Is.Ordered.Ascending);
-                }  
+                }
         }
 
         [Test]
@@ -240,7 +242,7 @@ namespace Tests.Services.UniverseEf
 
                     // Assert:
                     Assert.That(result, Is.EqualTo(5).Within(0.5));
-                } 
+                }
         }
 
 
@@ -261,8 +263,7 @@ namespace Tests.Services.UniverseEf
                     var result = sut.AverageSurfaceTemps();
 
                     // Assert:
-                    Assert.That(result, Is.EqualTo(5).Within(0.5));
-                }  
+                }
         }
 
 
@@ -283,16 +284,29 @@ namespace Tests.Services.UniverseEf
 
                     // Assert:
                     Assert.That(result, Is.EqualTo(14));
-                }   
+                }
         }
-
 
         [Test]
         [Category("Assignment: 13")]
         [Category("InMemoryDb")]
         public void ClosestPlanetsShouldReturn()
         {
+          
             
+            using (var context = new UniverseContext(options))
+                {
+                    // Setup:
+                    context.PlanetarySystems.Add(ValidSimpleData.TestStarSystem());
+                    context.SaveChanges();
+                    sut = new UniverseService(context);
+
+                    // Act:
+                    var result = sut.ClosestNeighbourPlanets();
+
+                    // Assert:
+                    Assert.That(result, Is.EqualTo(14));
+                }
         }
     }
 }

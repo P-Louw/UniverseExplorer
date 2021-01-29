@@ -22,7 +22,6 @@ namespace Tests.Services.UniverseEf.Seed
         
         /// <summary>
         /// For 'AverageMoonsDwarfPlanet' should return 5 precisely 4,5714285714285714285714285714286.
-        /// for 'AverageDiameter'
         /// </summary>
         /// <returns><see cref="List"/> with type <see cref="Planet"/></returns>
         public static List<Planet> DwarfPlanetSimpleData() =>
@@ -82,23 +81,23 @@ namespace Tests.Services.UniverseEf.Seed
             new List<Planet>
                 {
                     new Planet {KnownMoons = 5, Classification = "Dwarf planet", Name = "DwarfA",
-                        SurfaceTemperature = new Temperature {Min = 0, Max = 10}, PlanetarySystemID = 1},
+                        SurfaceTemperature = new Temperature {Min = 0, Max = 10}, PlanetarySystemID = 1, OrbitDistance = 210,},
                     new Planet {KnownMoons = 7, Classification = "Dwarf planet",Name = "DwarfB",
-                        SurfaceTemperature = new Temperature {Min = -31, Max = 5}, PlanetarySystemID = 1 },
+                        SurfaceTemperature = new Temperature {Min = -31, Max = 5}, PlanetarySystemID = 1 , OrbitDistance = 110,},
                     new Planet {KnownMoons = 8, Classification = "Dwarf planet",Name = "DwarfC",
-                        SurfaceTemperature = new Temperature {Min = -21, Max = 0},PlanetarySystemID = 1},
+                        SurfaceTemperature = new Temperature {Min = -21, Max = 0},PlanetarySystemID = 1, OrbitDistance = 120,},
                     new Planet {KnownMoons = 4, Classification = "Dwarf planet",Name = "DwarfD",
-                        SurfaceTemperature = new Temperature {Min = 0, Max = 24}, PlanetarySystemID = 1},
+                        SurfaceTemperature = new Temperature {Min = 0, Max = 24}, PlanetarySystemID = 1, OrbitDistance = 150,},
                     new Planet {KnownMoons = 6, Classification = "Dwarf planet",Name = "DwarfE",
-                        SurfaceTemperature = new Temperature {Min = -5, Max = 10}, PlanetarySystemID = 1},
+                        SurfaceTemperature = new Temperature {Min = -5, Max = 10}, PlanetarySystemID = 1, OrbitDistance = 190,},
                     new Planet {KnownMoons = 2, Classification = "Dwarf planet",Name = "DwarfF",
-                        SurfaceTemperature = new Temperature {Min = -5, Max = 20}, PlanetarySystemID = 1},
+                        SurfaceTemperature = new Temperature {Min = -5, Max = 20}, PlanetarySystemID = 1, OrbitDistance = 89,},
                     new Planet {KnownMoons = 0, Classification = "Dwarf planet", Name = "DwarfG",
-                        SurfaceTemperature = new Temperature {Min = 0, Max = 25}, PlanetarySystemID = 1},
+                        SurfaceTemperature = new Temperature {Min = 0, Max = 25}, PlanetarySystemID = 1,OrbitDistance = 55, },
                     new Planet
                         {
                             PlanetarySystemID = 1,
-                            OrbitDistance = 9,
+                            OrbitDistance = 1,
                             OrbitPeriod = 87,
                             KnownMoons = 4,
                             Name = "PlanetA",
@@ -109,7 +108,7 @@ namespace Tests.Services.UniverseEf.Seed
                     new Planet
                         {
                             PlanetarySystemID = 1,
-                            OrbitDistance = 34,
+                            OrbitDistance = 3,
                             OrbitPeriod = 87,
                             KnownMoons = 2,
                             Name = "PlanetB",
@@ -120,7 +119,7 @@ namespace Tests.Services.UniverseEf.Seed
                     new Planet
                         {
                             PlanetarySystemID = 1,
-                            OrbitDistance = 55,
+                            OrbitDistance = 59,
                             OrbitPeriod = 87,
                             KnownMoons = 9,
                             Name = "PlanetC",
@@ -142,7 +141,7 @@ namespace Tests.Services.UniverseEf.Seed
                     new Planet
                         {
                             PlanetarySystemID = 1,
-                            OrbitDistance = 3,
+                            OrbitDistance = 9,
                             OrbitPeriod = 87,
                             KnownMoons = 0,
                             Name = "PlanetE",
@@ -153,7 +152,7 @@ namespace Tests.Services.UniverseEf.Seed
                     new Planet
                         {
                             PlanetarySystemID = 1,
-                            OrbitDistance = 7,
+                            OrbitDistance = 15,
                             OrbitPeriod = 87,
                             KnownMoons = 8,
                             Name = "PlanetF",
