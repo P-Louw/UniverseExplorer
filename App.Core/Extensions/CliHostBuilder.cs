@@ -15,7 +15,8 @@ namespace App.Core.Extensions
 
         /// <summary>
         /// Specify startup class to be used without webserver setup. when using this
-        ///  a CLIght run method should be used after calling build on <see cref="IHostBuilder"/>.
+        ///  a 'Run' or 'Start' method should be chained after the 'Build' method from <see cref="IHostBuilder"/>.
+        ///  This should not be the native <see cref="IHostBuilder"/> run methods.
         /// </summary>
         /// <typeparam name="TStartup">The class that provides service registration, can contain optional ctor with param <see cref="IConfiguration"/>.</typeparam>
         /// <param name="builder">The <see cref="IHostBuilder"/> used to initialize with TStartup.</param>
