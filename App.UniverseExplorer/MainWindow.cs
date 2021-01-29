@@ -13,6 +13,7 @@ namespace App.UniverseExplorer
         public MainWindow(IUniverseService db) => 
             _db = db;
         
+        
         public override void OnWindowLoad()
         {
             var task_2 = _db.PlanetsOrderedAlphabetical();
