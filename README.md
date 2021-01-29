@@ -4,8 +4,9 @@
 A simple console application that queries a SQL data base for
 some solar facts.
 
-Set connectionstring in 'appsettings.json' in the 'DevelopUniverseDb' section.
+*App.UniverseExplorer/GUI/ & App.Core/Scenes/ contains files for display but have not been implemented yet.*
 
+Set connectionstring in 'appsettings.json' in the 'DevelopUniverseDb' section.
 To run migrations apply the following commands from the service folder 'UniverseExplorer\Services.UniverseEf\'
 
 Create migration:
