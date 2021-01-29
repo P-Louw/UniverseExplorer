@@ -26,6 +26,7 @@ Additional features need to be added or updated, see tasks lists.
 - [ ] Create derived types for temperature DTO.
 	- Celsius.
 	- Fahrenheit.
+- [ ] remove hardcode 'SolarSystem' data.
 - [ ] Implement custom formatting for displaying DTO data.
 - [ ] Use body classification object/enum instead of strings.
 - [ ] Add GUI.cs views.
