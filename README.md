@@ -2,7 +2,7 @@
 # Universe explorer :milky_way:
 
 A simple console application that queries a SQL data base for
-some simple solar facts.
+some solar facts.
 
 To run migrations apply the following commands from the root folder 'UniverseExplorer\..'
 
