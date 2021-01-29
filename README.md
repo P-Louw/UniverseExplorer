@@ -4,7 +4,7 @@
 A simple console application that queries a SQL data base for
 some solar facts.
 
-To run migrations apply the following commands from the root folder 'UniverseExplorer\Services.UniverseEf\'
+To run migrations apply the following commands from the service folder 'UniverseExplorer\Services.UniverseEf\'
 
 Create migration:
 ```
