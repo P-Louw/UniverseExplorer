@@ -13,7 +13,7 @@ dotnet ef --startup-project .\App.Core\App.Core.csproj --project .\Services.Univ
 
 Apply migration:
 ```
-dotnet ef --startup-project .\App.Core\App.Core.csproj --project .\Services.Uni database update UniverseMigration
+dotnet ef --startup-project .\App.Core\App.Core.csproj --project .\Services.UniverseEf\ update UniverseMigration
 ```
 
 Additional features need to be added or updated, see tasks lists.
