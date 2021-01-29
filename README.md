@@ -30,7 +30,10 @@ dotnet ef --startup-project ..\App.Core\App.Core.csproj database update Universe
 - [ ] Create derived types for temperature DTO.
 	- Celsius.
 	- Fahrenheit.
-- [ ] remove hardcode 'SolarSystem' data.
+- [ ] Implement IConfiguration usage for seperate 'Appconfig' files.
+	- Remove remaining duplicate connectionstrings.
+	- Move credentials to ENV.
+- [ ] Remove hardcode 'SolarSystem' data.
 - [ ] Update model serializer.
 - [ ] Remove temp tokenizer for serializer again.
 - [ ] Implement custom formatting for displaying DTO data.
