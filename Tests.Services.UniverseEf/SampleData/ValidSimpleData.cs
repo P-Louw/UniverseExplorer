@@ -47,6 +47,17 @@ namespace Tests.Services.UniverseEf.Seed
                 "PlanetF",
                 "PlanetG"
             };
+        
+        public static List<float> ExpectedAverageTempDwarf() => new List<float>
+        {
+            {25F},
+            {7.5F},
+            {2.5F},
+            {24F},
+            {-21F},
+            {-13F},
+            {10F}
+        };
 
         /// <summary>
         /// Valid data partial models.
@@ -85,7 +96,7 @@ namespace Tests.Services.UniverseEf.Seed
                     new Planet {KnownMoons = 7, Classification = "Dwarf planet",Name = "DwarfB",
                         SurfaceTemperature = new Temperature {Min = -31, Max = 5}, PlanetarySystemID = 1 , OrbitDistance = 110,},
                     new Planet {KnownMoons = 8, Classification = "Dwarf planet",Name = "DwarfC",
-                        SurfaceTemperature = new Temperature {Min = -21, Max = 0},PlanetarySystemID = 1, OrbitDistance = 120,},
+                        SurfaceTemperature = new Temperature {Min = 0, Max = -21},PlanetarySystemID = 1, OrbitDistance = 120,},
                     new Planet {KnownMoons = 4, Classification = "Dwarf planet",Name = "DwarfD",
                         SurfaceTemperature = new Temperature {Min = 0, Max = 24}, PlanetarySystemID = 1, OrbitDistance = 150,},
                     new Planet {KnownMoons = 6, Classification = "Dwarf planet",Name = "DwarfE",

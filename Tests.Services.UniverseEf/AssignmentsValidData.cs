@@ -11,6 +11,7 @@ using NUnit.Framework.Constraints;
 using Services.Core.DataModels.CelestialBodies;
 using Services.Core.DataModels.CelestialObjects;
 using Services.Core.DataModels.Units;
+using Services.Core.Models.DTO;
 using Services.UniverseService;
 using Services.UniverseService.Context;
 using Tests.Services.UniverseEf.DBContextDev;
@@ -28,9 +29,9 @@ namespace Tests.Services.UniverseEf
         public void Setup()
         {
             options = ContextBuilder.InitDbInMem();
-            ctx  = () => new UniverseContext(options);
+            ctx = () => new UniverseContext(options);
         }
-                
+
         [TearDown]
         public void CleanUp()
         {
@@ -249,7 +250,6 @@ namespace Tests.Services.UniverseEf
         [Test]
         [Category("Assignment: 11")]
         [Category("InMemoryDb")]
-        [Ignore("Method unfinished.")]
         public void AverageSurfaceTempShouldReturn()
         {
             using (var context = new UniverseContext(options))
@@ -263,6 +263,12 @@ namespace Tests.Services.UniverseEf
                     var result = sut.AverageSurfaceTemps();
 
                     // Assert:
+                    Assert.That(result, Contains.Key(
+                        "Dwarf planet").And.ContainKey("Planet"));
+                    
+                    CollectionAssert.AreEquivalent(ValidSimpleData.ExpectedAverageTempDwarf(),
+                        result["Dwarf planet"].Select(x =>
+                            x.AverageTemperature).ToList());
                 }
         }
 
@@ -292,8 +298,6 @@ namespace Tests.Services.UniverseEf
         [Category("InMemoryDb")]
         public void ClosestPlanetsShouldReturn()
         {
-          
-            
             using (var context = new UniverseContext(options))
                 {
                     // Setup:
