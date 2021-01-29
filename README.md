@@ -4,6 +4,8 @@
 A simple console application that queries a SQL database for
 some solar facts.
 
+Additional features need to be added or updated, see tasks lists.
+
 *App.UniverseExplorer/GUI/ & App.Core/Scenes/ contains files for display but have not been implemented yet.*
 
 Migrations
@@ -21,7 +23,6 @@ Apply migration:
 dotnet ef --startup-project ..\App.Core\App.Core.csproj database update UniverseMigration
 ```
 
-Additional features need to be added or updated, see tasks lists.
 
 
 # TODO :stars:
