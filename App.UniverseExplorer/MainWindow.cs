@@ -1,4 +1,8 @@
-﻿using App.Core.GUI;
+﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using App.Core.GUI;
+using Services.Core.DataModels.Units;
+using Services.Core.Models.DTO;
 using Services.UniverseService;
 using static System.Console;
 
@@ -13,78 +17,54 @@ namespace App.UniverseExplorer
         public MainWindow(IUniverseService db) => 
             _db = db;
         
-        
         public override void OnWindowLoad()
         {
-            var task_2 = _db.PlanetsOrderedAlphabetical();
-            WriteLine("Planets ordered alphabetically:");
-            foreach (var entry in task_2)
-                {
-                    WriteLine("Name: {0}", entry.Name);
-                }
-            WriteLine("Press enter to continue");
-            ReadLine();
+            PrintFunc.EnumerableResult(
+                () => _db.PlanetsOrderedAlphabetical(),
+                "Planets ordered alphabetically:",
+                (x) => $"Name: {x.Name}");
+                    
+                        
+            PrintFunc.EnumerableResult(
+                () => _db.PlanetsTempAboveZero(),
+                "Planets with a temperature above 0:",
+                (x) => $"{x.Name} -> {x.SurfaceTemperature.Max} °C"
+                );
             
-            var task_3 = _db.PlanetsTempAboveZero();
-            WriteLine("Planets with a temperature above 0:");
-            foreach (var entry in task_3)
-                {
-                    WriteLine("{0} -> {1} °C", entry.Name, entry.SurfaceTemperature.Max);
-                }
-            WriteLine("Press enter to continue");
-            ReadLine();
+            PrintFunc.EnumerableResult(
+                () => _db.PlanetNameLetterConstraint(),
+                "Planets with letter p & t case insensitive:",
+                (x) => $"{x.Name}");            
             
-            var task_4 = _db.PlanetNameLetterConstraint();
-            WriteLine("Planets with letter p & t case insensitive:");
-            foreach (var entry in task_4)
-                {
-                    WriteLine("{0}",entry.Name);
-                }
-            WriteLine("Press enter to continue");
-            ReadLine();
+            PrintFunc.EnumerableResult(
+                () => _db.PlanetsNameLengthDescending(),
+                "Planets sorted by name length:",
+                (x) => $"Length: {x.Name.Length} Name: {x.Name}");            
             
-            var task_5 = _db.PlanetsNameLengthDescending();
-            WriteLine("Planets sorted by name length:");
-            foreach(var planet in task_5) WriteLine($"{planet.Name.Length} -> {planet.Name}");
-            WriteLine("Press enter to continue");
-            ReadLine();
+            PrintFunc.EnumerableResult(
+                () => _db.PlanetDistanceToSunAscending(),
+                "Planets sorted by distance to the sun:",
+                (x) => $"Name: {x.Name} => Distance: {x.OrbitDistance}"); 
             
-            var task_6 = _db.PlanetDistanceToSunAscending();
-            WriteLine("Planets sorted by distance to the sun ascending:");
-            foreach (var entry in task_6)
-                {
-                    WriteLine("{0} -> {1}", entry.Name, entry.OrbitDistance);
-                }
-            WriteLine("Press enter to continue");
-            ReadLine(); 
+            PrintFunc.EnumerableResult(
+                () => _db.DwarfPlanetByMoonAmount(),
+                "Moon amount dwarf planets:",
+                (x) => $"Name: {x.Name} -> {x.KnownMoons}");
             
-            var task_7 = _db.DwarfPlanetByMoonAmount();
-            WriteLine("Moon amount dwarf planets:");
-            foreach (var entry in task_7)
-                {
-                    WriteLine("{0} -> {1}", entry.Name, entry.KnownMoons);
-                }
-            WriteLine("Press enter to continue");
-            ReadLine();
+            PrintFunc.DigitResult(
+                () => _db.TotalMoons(),
+                "Total amount of known moons:",
+                (x) => $"Amount: {x}");
             
-            var task_8 = _db.TotalMoons();
-            WriteLine("All known moons:\n -> {0}", task_8);
-            WriteLine("Press enter to continue");
-            ReadLine();
+            PrintFunc.EnumerableResult(
+                () => _db.DwarfPlanetsSortedDiameter(),
+                "Dwarf planets sorted by diameter:",
+                (x) => $"Name: {x.Name} -> Diameter: {x.Diameter}"); 
             
-            var task_9 = _db.DwarfPlanetsSortedDiameter();
-            WriteLine("Dwarf planets sorted by diameter:");
-            foreach (var entry in task_9)
-                {
-                   WriteLine("{0} -> {1}", entry.Name, entry.Diameter); 
-                }
-            WriteLine("Press enter to continue");
-            ReadLine();
-            
-            var task_10 = _db.AverageMoonsPerDwarfPlanet();
-            WriteLine("Average moons per Dwarf planet:\n- {0}", task_10);
-            WriteLine("Press enter to continue");
-            ReadLine();
+            PrintFunc.DigitResult(
+                () => _db.AverageMoonsPerDwarfPlanet(),
+                "Average moons per dwarf planet:",
+                (x) => $"Amount: {x}"); 
             
             var task_11 = _db.AverageSurfaceTemps();
             WriteLine("Average surface temperatures of all types:");
@@ -100,15 +80,16 @@ namespace App.UniverseExplorer
             WriteLine("Press enter to continue");
             ReadLine();
             
-            var task_12 = _db.TotalBodyAmount();
-            WriteLine("Total planets and other bodies:\n- {0}", task_12);
-            WriteLine("Press enter to continue");
-            ReadLine();
+            PrintFunc.DigitResult(
+                () => _db.TotalBodyAmount(),
+                "Total planets and other bodies:",
+                (x) => $"Amount: {x}");  
             
-            var task_13 = _db.ClosestNeighbourPlanets();
-            WriteLine("Closest neighbouring planets:\n{0} and {1} are only {3} apart.", task_13.PlanetA,task_13.PlanetB, task_13.MeasuredDistance);
-            WriteLine("Press enter to continue");
-            ReadLine();
+            PrintFunc.DtoResult<TwoPlanetDifference>(
+                () => _db.ClosestNeighbourPlanets(),
+                "Closest neighbouring planets:",
+                (x) => $"{x.PlanetA.Name} & {x.PlanetB.Name} are only {x.MeasuredDistance} Km apart.");  
+            
             active = false;
         }
     }

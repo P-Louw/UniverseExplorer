@@ -13,4 +13,8 @@
       <PackageReference Include="Terminal.Gui.Elmish" Version="0.1.8-preview1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Extensions" />
+    </ItemGroup>
+
 </Project>
