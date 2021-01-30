@@ -83,8 +83,8 @@ namespace Tests.Services.UniverseEf
                     var result = sut.PlanetsTempAboveZero();
 
                     // Assert:
-                    foreach (var category in result.Select(p => p.Classification))
-                        StringAssert.AreEqualIgnoringCase("Planet", category);
+                    CollectionAssert.Contains(result.Select(v => v.Classification), "Planet");
+                    CollectionAssert.Contains(result.Select(v => v.Classification), "Dwarf planet");
 
                     var temperatures = result.Select(r => r.SurfaceTemperature);
                     foreach (Temperature temp in temperatures)
@@ -154,8 +154,8 @@ namespace Tests.Services.UniverseEf
                     var result = sut.PlanetDistanceToSunAscending();
 
                     // Assert:
-                    Assert.That(result.Select(v =>
-                        v.Name.Length), Is.Ordered.Ascending);
+                    Assert.That(result.Select(v => 
+                        v.OrbitDistance), Is.Ordered.Ascending);
                 }
         }
 
@@ -309,7 +309,7 @@ namespace Tests.Services.UniverseEf
                     var result = sut.ClosestNeighbourPlanets();
 
                     // Assert:
-                    Assert.That(result, Is.EqualTo(14));
+                    Assert.That(result.MeasuredDistance, Is.EqualTo(2));
                 }
         }
     }
