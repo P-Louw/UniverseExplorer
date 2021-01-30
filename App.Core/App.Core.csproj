@@ -16,7 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\App.CLIghtFramework\App.CLIghtFramework.csproj" />
       <ProjectReference Include="..\App.UniverseExplorer\App.UniverseExplorer.csproj" />
       <ProjectReference Include="..\Services.UniverseEf\Services.UniverseEf.csproj" />
     </ItemGroup>

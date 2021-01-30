@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.UniverseEf", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.UniverseExplorer", "App.UniverseExplorer\App.UniverseExplorer.csproj", "{6D7D63AB-8155-4144-A693-318566BF3A68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Services.Models", "Tests.Services.Models\Tests.Services.Models.csproj", "{5242CD8B-EE84-4A3A-BD37-2988B99C264A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Services.Core.Models", "Tests.Services.Core.Models\Tests.Services.Core.Models.csproj", "{5242CD8B-EE84-4A3A-BD37-2988B99C264A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Services.UniverseEf", "Tests.Services.UniverseEf\Tests.Services.UniverseEf.csproj", "{A8FA6EAC-E961-40CB-8A76-FF5156C00644}"
 EndProject

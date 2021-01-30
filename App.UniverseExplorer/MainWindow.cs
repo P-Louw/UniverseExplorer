@@ -22,6 +22,7 @@ namespace App.UniverseExplorer
                 {
                     WriteLine("Name: {0}", entry.Name);
                 }
+            WriteLine("Press enter to continue");
             ReadLine();
             
             var task_3 = _db.PlanetsTempAboveZero();
@@ -30,6 +31,7 @@ namespace App.UniverseExplorer
                 {
                     WriteLine("{0} -> {1} °C", entry.Name, entry.SurfaceTemperature.Max);
                 }
+            WriteLine("Press enter to continue");
             ReadLine();
             
             var task_4 = _db.PlanetNameLetterConstraint();
@@ -38,11 +40,13 @@ namespace App.UniverseExplorer
                 {
                     WriteLine("{0}",entry.Name);
                 }
+            WriteLine("Press enter to continue");
             ReadLine();
             
             var task_5 = _db.PlanetsNameLengthDescending();
             WriteLine("Planets sorted by name length:");
             foreach(var planet in task_5) WriteLine($"{planet.Name.Length} -> {planet.Name}");
+            WriteLine("Press enter to continue");
             ReadLine();
             
             var task_6 = _db.PlanetDistanceToSunAscending();
@@ -51,6 +55,7 @@ namespace App.UniverseExplorer
                 {
                     WriteLine("{0} -> {1}", entry.Name, entry.OrbitDistance);
                 }
+            WriteLine("Press enter to continue");
             ReadLine(); 
             
             var task_7 = _db.DwarfPlanetByMoonAmount();
@@ -59,10 +64,12 @@ namespace App.UniverseExplorer
                 {
                     WriteLine("{0} -> {1}", entry.Name, entry.KnownMoons);
                 }
+            WriteLine("Press enter to continue");
             ReadLine();
             
             var task_8 = _db.TotalMoons();
             WriteLine("All known moons:\n -> {0}", task_8);
+            WriteLine("Press enter to continue");
             ReadLine();
             
             var task_9 = _db.DwarfPlanetsSortedDiameter();
@@ -71,10 +78,12 @@ namespace App.UniverseExplorer
                 {
                    WriteLine("{0} -> {1}", entry.Name, entry.Diameter); 
                 }
+            WriteLine("Press enter to continue");
             ReadLine();
             
             var task_10 = _db.AverageMoonsPerDwarfPlanet();
             WriteLine("Average moons per Dwarf planet:\n- {0}", task_10);
+            WriteLine("Press enter to continue");
             ReadLine();
             
             var task_11 = _db.AverageSurfaceTemps();
@@ -88,14 +97,17 @@ namespace App.UniverseExplorer
                                 cat.Classification, cat.AverageTemperature, cat.Max, cat.Min);
                         }
                 }
+            WriteLine("Press enter to continue");
             ReadLine();
             
             var task_12 = _db.TotalBodyAmount();
             WriteLine("Total planets and other bodies:\n- {0}", task_12);
+            WriteLine("Press enter to continue");
             ReadLine();
             
             var task_13 = _db.ClosestNeighbourPlanets();
             WriteLine("Closest neighbouring planets:\n{0} and {1} are only {3} apart.", task_13.PlanetA,task_13.PlanetB, task_13.MeasuredDistance);
+            WriteLine("Press enter to continue");
             ReadLine();
             active = false;
         }

@@ -16,7 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Services.UniverseEf\Services.UniverseEf.csproj" />
-      <ProjectReference Include="..\Tests.Services.Models\Tests.Services.Models.csproj" />
+      <ProjectReference Include="..\Tests.Services.Core.Models\Tests.Services.Core.Models.csproj" />
     </ItemGroup>
 
 </Project>
