@@ -21,7 +21,7 @@ namespace App.Core.Extensions
         /// <param name="builder">The <see cref="IHostBuilder"/> used to initialize with TStartup.</param>
         /// <param name="configMethodName">Optional specify name of method that registers services with <see cref="IServiceCollection"/> as a param. Default is 'ConfigureServices'.</param>
         /// <returns>Returns the same instance of <see cref="IHostBuilder"/>.</returns>
-        public static IHostBuilder CLIghtUseStartup<TStartup>(
+        public static IHostBuilder CLIUseStartup<TStartup>(
             this IHostBuilder builder)
             where TStartup : class =>
             builder.ConfigureServices((context, services) =>
@@ -45,12 +45,12 @@ namespace App.Core.Extensions
         /// <summary>
         /// Runs a CLIght application without webserver blocking the calling thread until <see cref="Host"/> shuts down. 
         /// </summary>
-        public static void CLIghtRun()
+        public static void CLIRun()
         {
             
         }
 
-        public static Task CLIghtRunAsync()
+        public static Task CLIRunAsync()
         {
            return Task.CompletedTask; 
         }

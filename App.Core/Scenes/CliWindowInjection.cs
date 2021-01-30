@@ -1,5 +1,4 @@
-﻿using App.CLIghtFramework.Windows;
-using App.CLIghtFramework.Windows.Context;
+﻿using App.Core.GUI;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace App.Core.Scenes

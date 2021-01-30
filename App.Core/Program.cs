@@ -22,6 +22,6 @@ namespace App.Core
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .CLIghtUseStartup<Startup>();
+                .CLIUseStartup<Startup>();
     }
 }

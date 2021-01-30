@@ -13,5 +13,7 @@ namespace Services.Core.DataModels.Units
         
         public float? Max { get; set; }
         public float? Min { get; set; }
+
+      
     }
 }
