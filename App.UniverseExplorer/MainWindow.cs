@@ -4,7 +4,6 @@ using static System.Console;
 
 namespace App.UniverseExplorer
 {
-    //https://github.com/migueldeicaza/gui.cs
     
     public class MainWindow : CLIWindow
     {

@@ -43,9 +43,6 @@ namespace App.Core.Extensions
                     configServiceMethod?.Invoke(instStartup, new object[] {services});
                 });
         
-        /// <summary>
-        /// Runs a CLIght application without webserver blocking the calling thread until <see cref="Host"/> shuts down. 
-        /// </summary>
         public static void CLIRun()
         {
             
