@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using App.CLIghtFramework.Windows.Context;
 
-namespace App.CLIghtFramework.Windows
+namespace App.Core.Scenes
 {
-    public abstract class CLIghtWindow : ICLIghtContext
+    public abstract class CLIWindow : ICLIContext
     {
         private Dictionary<string,Type> _clientWindows { get; set; }
         public abstract void OnWindowLoad();

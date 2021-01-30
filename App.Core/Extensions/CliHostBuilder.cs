@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace App.CLIghtFramework.Extensions.Hosting
+namespace App.Core.Extensions
 {
     /// <summary>
     /// Extensions to enable <see cref="IHostBuilder"/> utility without running a webserver.

@@ -2,7 +2,7 @@
 using App.CLIghtFramework.Windows.Context;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace App.CLIghtFramework.Extensions.IOC
+namespace App.Core.Scenes
 {
     public static class CliWindowInjection
     {
@@ -14,7 +14,7 @@ namespace App.CLIghtFramework.Extensions.IOC
         }
 
         public static IServiceCollection CLIghtAddDefaultWindow<T>(this IServiceCollection services) 
-            where T : CLIghtWindow
+            where T : CLIWindow
         {
             services.AddScoped<T>();
             return services;

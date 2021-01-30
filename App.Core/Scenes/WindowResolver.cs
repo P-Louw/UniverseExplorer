@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Reflection;
+using App.Core.Scenes;
 
-namespace App.CLIghtFramework.Windows.Context
+namespace App.Core.Scenes
 {
     public class WindowResolver : IWindowResolver
     {

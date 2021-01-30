@@ -24,60 +24,56 @@ namespace Services.UniverseService
                 .OrderBy(v => v.Name)
                 .ToList();
 
+        
         public IEnumerable<Planet> PlanetsTempAboveZero() =>
             _db.Planets.Where(p => p.SurfaceTemperature.Max > 0)
                 .Select(r => r);
 
+        
         public IEnumerable<Planet> PlanetNameLetterConstraint() =>
             _db.Planets.AsEnumerable()
                 .Where(p => "pt".All(c =>
                     p.Name.Contains(c, StringComparison.OrdinalIgnoreCase)));
 
+        
         public IEnumerable<Planet> PlanetsNameLengthDescending() =>
             _db.Planets.Select(p => p)
                 .OrderByDescending(v => v.Name.Length);
 
+        
         public IEnumerable<Planet> PlanetDistanceToSunAscending() =>
             _db.Planets.OrderBy(p => p.OrbitDistance);
 
+        
         public IEnumerable<Planet> DwarfPlanetByMoonAmount() =>
             _db.Planets
                 // .AsEnumerable()
                 .Where(p => p.Classification == "Dwarf planet")
                 .OrderBy(d => d.KnownMoons);
 
+        
         public int TotalMoons() =>
             _db.Planets.Select(g => g.KnownMoons).Sum();
 
+        
         public IEnumerable<Planet> DwarfPlanetsSortedDiameter() =>
             _db.Planets.Where(p => p.Classification == "Dwarf planet")
                 .OrderBy(v => v.Diameter);
 
+        
         public double AverageMoonsPerDwarfPlanet() =>
             _db.Planets.Where(e =>
                     EF.Functions.Like(e.Classification, "Dwarf planet"))
                 .Average(p => p.KnownMoons);
 
-        /*public IEnumerable<IGrouping<TemperatureResults, Planet>> AverageSurfaceTemps() =>
-            _db.Planets.Where(v =>
-                    v.SurfaceTemperature.Max != v.SurfaceTemperature.Min)
-                .AsEnumerable()
-                .GroupBy//(e => e.Classification)
-                (e => new TemperatureResults()
-                    {
-                        Classification = e.Classification,// .Key,
-                        AverageTemperature = e.SurfaceTemperature.Max + e.SurfaceTemperature.Min / 2
-                        // .Sum(v => v.SurfaceTemperature.Max +
-                                                        //v.SurfaceTemperature.Min) / 2
-                    });*/
+
         public Dictionary<string, List<TemperatureResults>> AverageSurfaceTemps() =>
             _db.Planets.Where(v =>
                     v.SurfaceTemperature.Max != v.SurfaceTemperature.Min)
                 .AsEnumerable()
-                //.GroupBy(e => e.Classification)
                 .Select(e => new TemperatureResults()
                     {
-                        Classification = e.Classification, 
+                        Classification = e.Classification,
                         AverageTemperature = e.SurfaceTemperature.Min != 0
                             ? (e.SurfaceTemperature.Max + e.SurfaceTemperature.Min) / 2
                             : e.SurfaceTemperature.Max,
@@ -89,38 +85,14 @@ namespace Services.UniverseService
                     group => group.Key.ToString(),
                     results => results.ToList<TemperatureResults>());
 
-        /*_db.Planets.Where(v =>
-                v.SurfaceTemperature.Max != v.SurfaceTemperature.Min)
-            .AsEnumerable()
-            //.GroupBy(e => e.Classification)
-            .Select(e => new TemperatureResults()
-                {
-                    Classification = e.Classification, // .Key,
-                    AverageTemperature = (e.SurfaceTemperature.Max + e.SurfaceTemperature.Min) / 2,
-                    Max = e.SurfaceTemperature.Max,
-                    Min = e.SurfaceTemperature.Min
-                    // .Sum(v => v.SurfaceTemperature.Max +
-                    //v.SurfaceTemperature.Min) / 2
-                })
-            .GroupBy(c => c.Classification)
-            .Select(v => new TemperatureReport(() =>
-                {
-                    return new Dictionary<string, List<TemperatureResults>>
-                        {
-                            {v.Key, v.ToList()}
-                        };
-                }));*/
-        /*.Select(v => new 
-            {
-                key = v.Key,
-                data = v.Select(v => v)
-            });*/
+
         public int TotalBodyAmount() =>
             _db.PlanetarySystems.Select(l => l.Planets.Count +
                                              l.Satellites.Count +
                                              l.Comets.Count)
                 .FirstOrDefault();
 
+        
         public TwoPlanetDifference ClosestNeighbourPlanets() =>
             _db.Planets.SelectMany(p1 =>
                     _db.Planets, (p1, p2) => new

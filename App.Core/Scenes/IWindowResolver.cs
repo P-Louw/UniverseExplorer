@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace App.CLIghtFramework.Windows.Context
+namespace App.Core.Scenes
 {
     public interface IWindowResolver
     {

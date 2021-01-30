@@ -1,5 +1,4 @@
-﻿using App.CLIghtFramework.Extensions.IOC;
-using App.UniverseExplorer;
+﻿using App.UniverseExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Services.UniverseService;
