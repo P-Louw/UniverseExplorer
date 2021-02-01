@@ -4,9 +4,12 @@
 A simple console application that queries a SQL database for
 some solar facts.
 
-Additional features need to be added or updated, see tasks lists.
+Additional features need to be added or updated, see todo list.
 
-*App.UniverseExplorer/GUI/ & App.Core/Scenes/ contains files for display but have not been implemented yet.*
+**Main branch uses simple print readline statements, on branch 'Develop'
+there are some CLI gui files and an interface for window injection.
+Not fully implemented yet.**
+
 
 Migrations
 ===

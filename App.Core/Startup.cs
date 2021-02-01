@@ -15,7 +15,6 @@ namespace App.Core
 
         public void ConfigureServices(IServiceCollection services) =>
             services.UniverseAddEfService(Configuration)
-                //.AddTransient<MainGUI>()
                 .AddTransient<MainWindow>()
                 .BuildServiceProvider();
 

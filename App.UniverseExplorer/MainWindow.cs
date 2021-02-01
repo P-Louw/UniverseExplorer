@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
-using App.Core.GUI;
 using Services.Core.DataModels.Units;
 using Services.Core.Models.DTO;
 using Services.UniverseService;
@@ -9,7 +8,7 @@ using static System.Console;
 namespace App.UniverseExplorer
 {
     
-    public class MainWindow : CLIWindow
+    public class MainWindow 
     {
         private bool active = true;
         private readonly IUniverseService _db;
@@ -17,7 +16,7 @@ namespace App.UniverseExplorer
         public MainWindow(IUniverseService db) => 
             _db = db;
         
-        public override void OnWindowLoad()
+        public void OnWindowLoad()
         {
             PrintFunc.EnumerableResult(
                 () => _db.PlanetsOrderedAlphabetical(),
