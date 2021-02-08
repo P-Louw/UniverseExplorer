@@ -20,8 +20,7 @@ namespace Services.UniverseService
 
 
         public IEnumerable<Planet> PlanetsOrderedAlphabetical() =>
-            _db.Planets.Select(p => p)
-                .OrderBy(v => v.Name)
+            _db.Planets.OrderBy(v => v.Name)
                 .ToList();
 
         
@@ -37,8 +36,7 @@ namespace Services.UniverseService
 
         
         public IEnumerable<Planet> PlanetsNameLengthDescending() =>
-            _db.Planets.Select(p => p)
-                .OrderByDescending(v => v.Name.Length);
+            _db.Planets.OrderByDescending(v => v.Name.Length);
 
         
         public IEnumerable<Planet> PlanetDistanceToSunAscending() =>
@@ -47,17 +45,16 @@ namespace Services.UniverseService
         
         public IEnumerable<Planet> DwarfPlanetByMoonAmount() =>
             _db.Planets
-                // .AsEnumerable()
-                .Where(p => String.Equals(p.Classification,  "Dwarf planet", StringComparison.OrdinalIgnoreCase))
+                .Where(p => EF.Functions.Like(p.Classification, "Dwarf planet"))
                 .OrderBy(d => d.KnownMoons);
 
-        
+
         public int TotalMoons() =>
-            _db.Planets.Select(g => g.KnownMoons).Sum();
+            _db.Planets.Sum(m => m.KnownMoons);
 
         
         public IEnumerable<Planet> DwarfPlanetsSortedDiameter() =>
-            _db.Planets.Where(p => String.Equals(p.Classification,"Dwarf planet", StringComparison.OrdinalIgnoreCase))
+            _db.Planets.Where(p => EF.Functions.Like(p.Classification, "Dwarf planet"))
                 .OrderBy(v => v.Diameter);
 
         
@@ -83,7 +80,7 @@ namespace Services.UniverseService
                 .GroupBy(c => c.Classification)
                 .ToDictionary(
                     group => group.Key.ToString(),
-                    results => results.ToList<TemperatureResults>());
+                    results => results.ToList());
 
 
         public int TotalBodyAmount() =>
